@@ -5,25 +5,31 @@ var stack = new Stack();
 stack.Pop();
 stack.Pop();
 stack.Pop();
-Console.WriteLine("Popped from empty stack.");
+Console.WriteLine("\n\tPopped from empty stack.");
 stack.Display();
 
 stack.Push(1);
 stack.Push("two");
 stack.Push('a');
 stack.Push(4);
-Console.WriteLine("Pushed 1, 2, 'a', 4");
+Console.WriteLine("\n\tPushed 1, 2, 'a', 4");
 stack.Display();
 
 stack.Pop();
 stack.Push(5);
-Console.WriteLine("Popped 4, then pushed 5");
+Console.WriteLine("\n\tPopped 4, then pushed 5");
 stack.Display();
 
 stack.Peek();
-Console.WriteLine("Peeked top, should be no change");
+Console.WriteLine("\n\tPeeked top, should be no change");
 stack.Display();
 
+var stack2 = new Stack(maxSize:2);
+stack2.Push("first");
+stack2.Push(2);
+stack2.Push("this should fail");
+Console.WriteLine("\n\tPushed 3 elements onto a new stack with MAXSIZE=2, the last element shouldn't be in stack.");
+stack2.Display();
 
 Console.ReadKey();
 
