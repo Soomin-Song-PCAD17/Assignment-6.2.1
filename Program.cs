@@ -2,6 +2,12 @@
 /// 
 
 var stack = new Stack();
+stack.Pop();
+stack.Pop();
+stack.Pop();
+Console.WriteLine("Popped from empty stack.");
+stack.Display();
+
 stack.Push(1);
 stack.Push("two");
 stack.Push('a');
@@ -42,7 +48,7 @@ class Stack
 
     public object Pop()
     {
-        if (Top == null) { return -1; }
+        if (Top == null) { return null; }
         object num = Top.Data;
         Top = Top.Next;
         Size--;
@@ -51,7 +57,7 @@ class Stack
 
     public object Peek()
     {
-        if(Top == null) { return -1; }
+        if(Top == null) { return null; }
         return Top.Data;
     }
 
@@ -62,7 +68,7 @@ class Stack
 
     public void Display()
     {
-        Console.WriteLine("Stack");
+        Console.WriteLine("\t-Stack-");
         Node pointer = Top;
         while (pointer != null)
         {
