@@ -32,23 +32,31 @@ class Stack
 {
     public int Size { get; set; }
     public Node? Top { get; set; }
+    private readonly int MAXSIZE;
+    private bool IsEmpty { get=>Top == null; }
+    private bool IsFull { get => Size >= MAXSIZE; }
 
-    
-    public Stack()
+    public Stack(int maxSize = int.MaxValue)
     {
         Size = 0;
         Top = null;
+        MAXSIZE = maxSize;
     }
 
     public void Push(object num)
     {
+        if(IsFull)
+        {
+            Console.WriteLine("");
+            return;
+        }
         Top = new Node(num,Top);
         Size++;
     }
 
     public object Pop()
     {
-        if (Top == null) { return null; }
+        if (IsEmpty) { return null; }
         object num = Top.Data;
         Top = Top.Next;
         Size--;
@@ -57,13 +65,8 @@ class Stack
 
     public object Peek()
     {
-        if(Top == null) { return null; }
+        if(IsEmpty) { return null; }
         return Top.Data;
-    }
-
-    public bool IsEmpty()
-    {
-        return Top == null;
     }
 
     public void Display()
